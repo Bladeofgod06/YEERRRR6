@@ -106,7 +106,9 @@ function HomePage({setPage,openLogin}) {
         <Card className="statusBox">
           <div className="statusHead"><i></i><b>Sunucu Durumu</b><span>Çevrimiçi</span></div>
           {[['IP Adresi','185.34.101.48'],['Oyuncular','182 / 500'],['Ping','21ms'],['Harita','İstanbul']].map(([a,b])=><div className="statusRow" key={a}><span>{a}</span><b>{b}</b></div>)}
-          <Button className="full">Sunucuya Katıl</Button>
+          <Button  className="full"  onClick={() =>
+    window.location.href = "fivem://connect/185.34.101.48:30120" } > Sunucuya Katıl
+</Button>
         </Card>
       </div>
     </section>

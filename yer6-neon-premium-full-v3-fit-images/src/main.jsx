@@ -97,15 +97,15 @@ function HomePage({setPage,openLogin}) {
         <div className="heroText">
           <span>YER6 ROLEPLAY</span>
           <h1>Bir Şehrin<br/><em>Yeni Hikayesi</em> Başlıyor!</h1>
-          <p>İstanbul temalı premium roleplay deneyimi. Sade, güçlü ve fotoğraflı YER6 arayüzü.</p>
+          <p>İstanbul Temalı Türkiyenin En İyi Sunucusu</p>
           <div className="heroActions">
             <Button onClick={()=>openLogin('register')}><UserPlus size={18}/> Hemen Katıl</Button>
-            <Button variant="ghost">Discord'a Katıl</Button>
+            <Button variant="ghost" onClick={() => window.open("https://discord.gg/ysewESgQm", "_blank")}> Discord'a Katıl </Button>
           </div>
         </div>
         <Card className="statusBox">
           <div className="statusHead"><i></i><b>Sunucu Durumu</b><span>Çevrimiçi</span></div>
-          {[['IP Adresi','connect.yer6rp.com'],['Oyuncular','182 / 500'],['Ping','21ms'],['Harita','İstanbul']].map(([a,b])=><div className="statusRow" key={a}><span>{a}</span><b>{b}</b></div>)}
+          {[['IP Adresi','185.34.101.48'],['Oyuncular','182 / 500'],['Ping','21ms'],['Harita','İstanbul']].map(([a,b])=><div className="statusRow" key={a}><span>{a}</span><b>{b}</b></div>)}
           <Button className="full">Sunucuya Katıl</Button>
         </Card>
       </div>

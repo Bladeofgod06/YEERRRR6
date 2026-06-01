@@ -14,7 +14,7 @@ const photos = ["yer6-photo-1.jpg", "yer6-photo-2.jpg", "yer6-photo-3.jpg", "yer
 const starterAdmins = [
   { username:'Founder', password:'123456', discordId:'founder', role:'Founder' },
   { username:'Arda Eker', password:'Arda1234', discordId:'1144954440667910155', role:'General Admin' },
-  { username:'Can Polat', password:'123456', discordId:'987654321098765432', role:'Founder' }
+  { username:'Can Polat', password:'123456', discordId:'330748660956790785', role:'Founder' }
 ];
 
 const starterPlayers = [
@@ -107,8 +107,7 @@ function HomePage({setPage,openLogin}) {
           <div className="statusHead"><i></i><b>Sunucu Durumu</b><span>Çevrimiçi</span></div>
           {[['IP Adresi','185.34.101.48'],['Oyuncular','182 / 500'],['Ping','21ms'],['Harita','İstanbul']].map(([a,b])=><div className="statusRow" key={a}><span>{a}</span><b>{b}</b></div>)}
           <Button  className="full"  onClick={() =>
-    window.location.href = "fivem://connect/185.34.101.48:30120" } > Sunucuya Katıl
-</Button>
+    window.location.href = "fivem://connect/185.34.101.48:30120" } >Sunucuya Katıl</Button>
         </Card>
       </div>
     </section>
@@ -117,7 +116,7 @@ function HomePage({setPage,openLogin}) {
       <GalleryBlock title="Ekip ve Sokak" subtitle="YER6 Fotoğraf" imgs={group2}/>
       <GalleryBlock title="Gece Hayatı" subtitle="YER6 Fotoğraf" imgs={group3}/>
     </section>
-    <footer className="footer"><div><Logo/><p>YER6 Roleplay, İstanbul temalı gerçekçi rol deneyimi.</p></div><Card className="adminFoot"><h3>Admin Paneli</h3><p>Yönetim paneline giriş yap.</p><Button onClick={()=>openLogin('admin')}>Panel'e Giriş Yap</Button></Card></footer>
+    <footer className="footer"><div><Logo/><p>YER6 Roleplay</p></div><Card className="adminFoot"><h3>Admin Paneli</h3><p>Yönetim paneline giriş yap.</p><Button onClick={()=>openLogin('admin')}>Panel'e Giriş Yap</Button></Card></footer>
   </div>
 }
 
@@ -161,7 +160,7 @@ function LoginPage({setPage,mode,setMode,auth,setAuth,loginAdmin,loginPlayer,reg
       <Field type="password" value={auth.password} onChange={v=>setAuth({...auth,password:v})} placeholder="Şifre"/>
       {isRegister&&<Field value={auth.steam} onChange={v=>setAuth({...auth,steam:v})} placeholder="Steam profil linki"/>}
       <Button className="full" onClick={isAdmin?loginAdmin:isRegister?registerPlayer:loginPlayer}>{isAdmin?'Admin Girişi Yap':isRegister?'Kayıt Ol ve Panele Gir':'Oyuncu Girişi Yap'}</Button>
-      <div className="hint"><b>Admin:</b> founder / 123456<br/><b>Test oyuncu:</b> test / 123456</div>
+      <div className="hint"><
     </Card>
   </div>
 }
@@ -214,7 +213,7 @@ function AdminPanel({admin,setAdmin,setPage,players,setPlayers,pending,setPendin
     {active==='Başvurular'&&<Panel title="Yetkili Başvuruları">{apps.length===0&&<p className="muted">Başvuru yok.</p>}{apps.map((a,i)=><Row key={a.discordId+i}><div><b>{a.name}</b><p>{a.discordId} • {a.status}</p><small>{a.reason}</small></div><div className="actions"><Button disabled={a.locked} onClick={()=>appResult(i,'Kabul Edildi')}>Kabul</Button><Button disabled={a.locked} variant="ghost" onClick={()=>appResult(i,'Reddedildi')}>Red</Button></div></Row>)}</Panel>}
     {active==='Destekler'&&<Panel title="Destekler">{tickets.map(t=><Row key={t.id}><div><b>{t.id} - {t.title}</b><p>{t.discordId} • {t.state} • {t.assigned}</p><small>{t.description}</small></div><div className="actions"><Button onClick={()=>assignTicket(t.id)}>Üstlen</Button><Button variant="ghost" onClick={()=>closeTicket(t.id)}>Kapat</Button></div></Row>)}</Panel>}
     {active==='Yetkililer'&&<Panel title="Yetkili Yönetimi"><div className="grid4"><Field value={newAdmin.username} onChange={v=>setNewAdmin({...newAdmin,username:v})} placeholder="Ad"/><Field value={newAdmin.discordId} onChange={v=>setNewAdmin({...newAdmin,discordId:v})} placeholder="Discord ID"/><Field value={newAdmin.password} onChange={v=>setNewAdmin({...newAdmin,password:v})} placeholder="Şifre"/><select className="field" value={newAdmin.role} onChange={e=>setNewAdmin({...newAdmin,role:e.target.value})}>{ranks.map(r=><option key={r}>{r}</option>)}</select></div><Button onClick={addAdmin}>Yetkili Ekle</Button>{admins.map(a=><Row key={a.discordId}><div><b>{a.username}</b><p>{a.discordId} • {a.role}</p><small>Şifre: {a.password}</small></div></Row>)}</Panel>}
-    {active==='Donate Market'&&<Panel title="Donate Yönetimi">{donate.map(d=><Row key={d.type}><div><b>{d.type}</b><p>{d.items.join(' • ')}</p></div><Button>Düzenle</Button></Row>)}</Panel>}
+    {active==='Donate Market'&&<Panel title="Donate Yönetimi">{donate.map(d=><Row key={d.type}><div><b>{d.type}</b><p>{d.items.join(' • ')}</p></div><<Button onClick={() => alert(`${d.type} düzenleme paneli açıldı`)}>Düzenle</Button></Row>)}</Panel>}
     {active==='Karakterler'&&<Panel title="Karakter Yönetimi"><p className="muted">Karakterler ön sayfadaki Karakterler bölümünden eklenebilir. Buradan denetim yapılır.</p></Panel>}
     {active==='Site Ayarları'&&<Panel title="Site Ayarları"><div className="grid3"><Button>Tema: Kırmızı</Button><Button variant="ghost">Fotoğraf Döngüsü Aktif</Button><Button variant="ghost">Tüm Tuşlar Aktif</Button></div></Panel>}
     {active==='Loglar'&&<Panel title="Loglar">{logs.map((l,i)=><div className="log" key={i}>{l}</div>)}</Panel>}

@@ -18,7 +18,7 @@ const starterAdmins = [
 ];
 
 const starterPlayers = [
-  { username:'TestOyuncu', password:'123456', discordId:'test', steam:'https://steamcommunity.com/id/test', status:'Onaylandı' }
+  { username:'', password:'', discordId:'test', steam:'', status:'Onaylandı' }
 ];
 
 const ranks = ['Support','Moderator','Head Moderator','Admin','General Admin','Founder'];
@@ -123,7 +123,7 @@ function HomePage({setPage,openLogin}) {
 function RulesPage({setPage,openLogin}) {
   const [search,setSearch] = useState('');
   const filtered = rules.filter(r=>(r.name+r.penalty+r.level).toLowerCase().includes(search.toLowerCase()));
-  return <div className="inner"><Header setPage={setPage} openLogin={openLogin}/><main><Title kicker="YÖNETMELİK" title="YER6 Kurallar" text="Full ceza listesi ve arama sistemi."/><div className="search"><Search size={18}/><input value={search} onChange={e=>setSearch(e.target.value)} placeholder="Ceza ara..."/></div><Card className="ruleList">{filtered.map(r=><div className="rule" key={r.id}><span>{r.id}</span><b>{r.name}</b><Badge tone={r.level==='Perma'||r.level==='Ağır'?'bad':'warn'}>{r.penalty}</Badge></div>)}</Card></main></div>
+  return <div className="inner"><Header setPage={setPage} openLogin={openLogin}/><main><Title kicker="YÖNETMELİK" title="YER6 Kurallar" text="Ceza listesi ve arama sistemi."/><div className="search"><Search size={18}/><input value={search} onChange={e=>setSearch(e.target.value)} placeholder="Ceza ara..."/></div><Card className="ruleList">{filtered.map(r=><div className="rule" key={r.id}><span>{r.id}</span><b>{r.name}</b><Badge tone={r.level==='Perma'||r.level==='Ağır'?'bad':'warn'}>{r.penalty}</Badge></div>)}</Card></main></div>
 }
 
 function CharactersPage({setPage,openLogin,characters,setCharacters}) {
@@ -245,7 +245,7 @@ function App() {
   function openLogin(m) { setMode(m); setPage('login'); setAuth({username:'',discordId:'',password:'',steam:''}); }
   function loginAdmin() {
     const a=admins.find(x=>String(x.discordId).trim()===String(auth.discordId).trim() && String(x.password).trim()===String(auth.password).trim());
-    if(!a) return alert('Admin giriş hatalı. Discord ID: founder / Şifre: 123456');
+    if(!a) return alert('Admin giriş hatalı. ');
     setAdmin(a); setPage('admin'); log(a.username+' admin girişi yaptı.');
   }
   function registerPlayer() {
